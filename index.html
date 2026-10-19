@@ -3,33 +3,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MatchVibe - Live Football Scores & Streams</title>
+    <title>MatchVibe</title>
     <style>
         body {
-            background-color: #0b0f19;
-            color: #ffffff;
+            background-color: #f3f4f6;
+            color: #1f2937;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             margin: 0;
-            padding: 10px;
+            padding: 0;
+            padding-bottom: 70px;
         }
         .container {
             max-width: 600px;
             margin: 0 auto;
+            padding: 15px;
         }
         .header {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            background: #1f2937;
-            padding: 12px 15px;
-            border-radius: 10px;
+            justify-content: space-between;
             margin-bottom: 15px;
         }
-        .section-title {
-            font-size: 15px;
-            color: #38bdf8;
-            margin: 15px 0 10px 0;
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            font-weight: 500;
+            color: #4b5563;
+        }
+        .avatar {
+            width: 35px;
+            height: 35px;
+            background: #d1d5db;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-weight: bold;
+            color: #374151;
+        }
+        /* Featured Card */
+        .featured-card {
+            background: linear-gradient(135deg, #1e3a8a, #0f172a);
+            color: white;
+            padding: 20px;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .match-card {
+            background: #ffffff;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border: 1px solid #e5e7eb;
+        }
+        .btn-action {
+            background: #d97706;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 12px;
+            cursor: pointer;
+        }
+        /* Bottom Navigation Bar */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #ffffff;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            border-top: 1px solid #e5e7eb;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+            z-index: 1000;
+        }
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #9ca3af;
+            font-size: 11px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        .nav-item.active {
+            color: #16a34a;
+        }
+        .nav-item svg {
+            width: 22px;
+            height: 22px;
+            margin-bottom: 3px;
+            fill: currentColor;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
         }
     </style>
 </head>
@@ -37,68 +118,122 @@
 
 <div class="container">
     
-    <!-- Header / User Info -->
+    <!-- Top User Header -->
     <div class="header">
-        <span>⚽ MatchVibe</span>
-        <span style="font-size: 12px; color: #9ca3af;">mohaxalane12@gmail.com</span>
-    </div>
-
-    <!-- Natiijooyinka iyo Kulamada Tooska ah -->
-    <div style="background-color: #111827; padding: 15px; border-radius: 12px; margin-bottom: 15px;">
-        
-        <!-- Match Featured (Live) -->
-        <div style="background: linear-gradient(135deg, #1e3a8a, #0f172a); padding: 15px; border-radius: 10px; margin-bottom: 15px; border: 1px solid #3b82f6;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                <span style="font-size: 12px; background: #2563eb; padding: 3px 8px; border-radius: 4px;">SERIE A</span>
-                <span style="color: #ef4444; font-weight: bold; font-size: 12px;">● LIVE</span>
-            </div>
-            <div style="display: flex; justify-content: space-between; align-items: center; text-align: center; margin: 10px 0;">
-                <div style="width: 40%;"><strong style="font-size: 14px;">Parma</strong></div>
-                <div style="width: 20%; background: rgba(255,255,255,0.1); padding: 5px; border-radius: 8px; font-weight: bold;">0 : 3</div>
-                <div style="width: 40%;"><strong style="font-size: 14px;">Torino</strong></div>
-            </div>
-            <button style="width: 100%; background: #d97706; color: white; border: none; padding: 8px; border-radius: 6px; font-weight: bold; margin-top: 10px; cursor: pointer;">Daawade</button>
-        </div>
-
-        <div class="section-title" style="margin-top: 0;">Natiijooyinka hadda</div>
-
-        <!-- Match Card 1 -->
-        <div style="background: #1f2937; padding: 12px; border-radius: 8px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
-            <div>
-                <div style="font-size: 14px; font-weight: bold;">Parma vs Torino</div>
-                <div style="font-size: 11px; color: #9ca3af; margin-top: 3px;">19 Oct, 2026 • 09:45 PM • Serie A</div>
-            </div>
-            <button style="background: #d97706; color: white; border: none; padding: 6px 14px; border-radius: 6px; font-size: 12px; font-weight: bold; cursor: pointer;">Daawade</button>
-        </div>
-
-        <!-- Match Card 2 -->
-        <div style="background: #1f2937; padding: 12px; border-radius: 8px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;">
-            <div>
-                <div style="font-size: 14px; font-weight: bold;">Tottenham vs Coventry</div>
-                <div style="font-size: 11px; color: #9ca3af; margin-top: 3px;">19 Oct, 2026 • 10:00 PM • Premier League</div>
-            </div>
-            <button style="background: #16a34a; color: white; border: none; padding: 6px 14px; border-radius: 6px; font-size: 12px; font-weight: bold; cursor: pointer;">Daawade</button>
-        </div>
-
-        <!-- Match Card 3 -->
-        <div style="background: #1f2937; padding: 12px; border-radius: 8px; display: flex; justify-content: space-between; align-items: center;">
-            <div>
-                <div style="font-size: 14px; font-weight: bold;">Getafe vs Rayo Vallecano</div>
-                <div style="font-size: 11px; color: #9ca3af; margin-top: 3px;">19 Oct, 2026 • 10:00 PM • La Liga</div>
-            </div>
-            <button style="background: #16a34a; color: white; border: none; padding: 6px 14px; border-radius: 6px; font-size: 12px; font-weight: bold; cursor: pointer;">Daawade</button>
+        <div class="user-info">
+            <div class="avatar">M</div>
+            <span>mohaxalane12@gmail.com</span>
         </div>
     </div>
 
-    <!-- Live Match Streams Section -->
-    <div class="section-title">Kulamada Soo Socda & Streams</div>
-    <div style="background: #1f2937; padding: 15px; border-radius: 10px; margin-bottom: 20px;">
-        <div style="font-size: 13px; font-weight: bold; margin-bottom: 5px;">Featured Match: Today's Top Match</div>
-        <div style="font-size: 11px; color: #9ca3af; margin-bottom: 10px;">Click below to access available live stream channels for mobile and desktop.</div>
-        <button style="width: 100%; background: #2563eb; color: white; border: none; padding: 10px; border-radius: 6px; font-weight: bold; cursor: pointer;">Watch Live Stream</button>
+    <!-- TAB 1: HOME -->
+    <div id="home-tab" class="tab-content active">
+        <!-- Featured Match -->
+        <div class="featured-card">
+            <div style="font-size: 12px; opacity: 0.8; margin-bottom: 10px;">UEFA Champions League • Tue, Oct 20</div>
+            <div style="display: flex; justify-content: space-between; align-items: center; text-align: center; margin: 15px 0;">
+                <div><strong>Fenerbahçe</strong></div>
+                <div style="background: rgba(255,255,255,0.2); padding: 8px 12px; border-radius: 50%; font-size: 12px;">19:34</div>
+                <div><strong>Slavia Praha</strong></div>
+            </div>
+            <button style="width: 100%; background: transparent; border: 1px solid #f59e0b; color: #f59e0b; padding: 10px; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 10px;">SAADAALI</button>
+        </div>
+
+        <div style="font-weight: bold; margin-bottom: 12px; font-size: 15px;">Kulamada Soo Socda</div>
+
+        <!-- Match List -->
+        <div class="match-card">
+            <div>
+                <div style="font-weight: bold; font-size: 14px;">Fenerbahçe vs Slavia Praha</div>
+                <div style="font-size: 11px; color: #6b7280; margin-top: 4px;">📅 20 Oct, 2026 • 07:45 PM</div>
+                <div style="font-size: 11px; color: #d97706; margin-top: 2px;">⚽ UEFA Champions League</div>
+            </div>
+            <button class="btn-action">SAADAALI</button>
+        </div>
+
+        <div class="match-card">
+            <div>
+                <div style="font-weight: bold; font-size: 14px;">Sabah FA vs Borussia D...</div>
+                <div style="font-size: 11px; color: #6b7280; margin-top: 4px;">📅 20 Oct, 2026 • 07:45 PM</div>
+                <div style="font-size: 11px; color: #d97706; margin-top: 2px;">⚽ UEFA Champions League</div>
+            </div>
+            <button class="btn-action" style="background: #16a34a;">SAADAALI</button>
+        </div>
+    </div>
+
+    <!-- TAB 2: KALA SAREYNTA (Standings) -->
+    <div id="standings-tab" class="tab-content">
+        <h2>Kala Sareynta horyaalka</h2>
+        <p style="color: #6b7280;">Halkan waxaa ka soo muuqan doona dhibcaha iyo boosaska kooxaha.</p>
+    </div>
+
+    <!-- TAB 3: WARAR (News) -->
+    <div id="warar-tab" class="tab-content">
+        <h2>Wararka Ciyaaraha</h2>
+        <p style="color: #6b7280;">Wararkii ugu dambeeyay ee suuqa iibka iyo ciyaaraha maanta.</p>
+    </div>
+
+    <!-- TAB 4: TOOS (Live Stream) -->
+    <div id="toos-tab" class="tab-content">
+        <h2>Daawashada Tooska ah (Live Streams)</h2>
+        <div style="background: white; padding: 15px; border-radius: 12px; border: 1px solid #e5e7eb;">
+            <p style="font-weight: bold;">Kulanka ugu kulul hadda:</p>
+            <button style="width: 100%; background: #2563eb; color: white; border: none; padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer;">Halkan Riix si aad u Daawatid</button>
+        </div>
+    </div>
+
+    <!-- TAB 5: PROFILE -->
+    <div id="profile-tab" class="tab-content">
+        <h2>Akoonkaaga (Profile)</h2>
+        <div style="background: white; padding: 15px; border-radius: 12px; border: 1px solid #e5e7eb;">
+            <p><strong>Magaca:</strong> Mohamed Abdullah</p>
+            <p><strong>Email:</strong> mohaxalane12@gmail.com</p>
+            <p><strong>Xaaladda:</strong> Verified Account (Binance / USDT)</p>
+        </div>
     </div>
 
 </div>
+
+<!-- Bottom Navigation Bar -->
+<div class="bottom-nav">
+    <a class="nav-item active" onclick="switchTab('home', this)">
+        <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+        Home
+    </a>
+    <a class="nav-item" onclick="switchTab('standings', this)">
+        <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+        Kala Sareynta
+    </a>
+    <a class="nav-item" onclick="switchTab('warar', this)">
+        <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+        Warar
+    </a>
+    <a class="nav-item" onclick="switchTab('toos', this)">
+        <svg viewBox="0 0 24 24"><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+        Toos
+    </a>
+    <a class="nav-item" onclick="switchTab('profile', this)">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg>
+        Profile
+    </a>
+</div>
+
+<script>
+    function switchTab(tabName, element) {
+        // Hide all tabs
+        document.querySelectorAll('.tab-content').forEach(tab => {
+            tab.classList.remove('active');
+        });
+        // Remove active class from nav items
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.classList.remove('active');
+        });
+        // Show target tab
+        document.getElementById(tabName + '-tab').classList.add('active');
+        // Add active class to clicked nav item
+        element.classList.add('active');
+    }
+</script>
 
 </body>
 </html>
