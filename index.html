@@ -159,6 +159,12 @@
             </div>
             <button class="btn-action" style="background: #16a34a;">SAADAALI</button>
         </div>
+
+        <!-- ADSTERRA AD CONTAINER -->
+        <div style="margin: 20px 0; text-align: center;">
+            <script async="async" data-cfasync="false" src="https://czernik.org/21/4565108774e61b2ef293d89c825f3d13"></script>
+            <div id="container-4565108774e61b2ef293d89c825f3d13"></div>
+        </div>
     </div>
 
     <!-- TAB 2: KALA SAREYNTA (Standings) -->
@@ -209,7 +215,7 @@
         Warar
     </a>
     <a class="nav-item" onclick="switchTab('toos', this)">
-        <svg viewBox="0 0 24 24"><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8 z"/></svg>
         Toos
     </a>
     <a class="nav-item" onclick="switchTab('profile', this)">
@@ -220,17 +226,13 @@
 
 <script>
     function switchTab(tabName, element) {
-        // Hide all tabs
         document.querySelectorAll('.tab-content').forEach(tab => {
             tab.classList.remove('active');
         });
-        // Remove active class from nav items
         document.querySelectorAll('.nav-item').forEach(item => {
             item.classList.remove('active');
         });
-        // Show target tab
         document.getElementById(tabName + '-tab').classList.add('active');
-        // Add active class to clicked nav item
         element.classList.add('active');
     }
 </script>
