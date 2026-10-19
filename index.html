@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MatchVibe - Live Sports & Football Scores</title>
+    <title>MatchVibe - Live Sports, Football Scores & Streaming</title>
     <style>
         * {
             margin: 0;
@@ -25,6 +25,9 @@
             justify-content: space-between;
             align-items: center;
             border-bottom: 2px solid #2563eb;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
         .logo {
             font-size: 1.5rem;
@@ -39,34 +42,59 @@
             text-decoration: none;
             margin-left: 1rem;
             font-weight: 500;
+            font-size: 0.9rem;
         }
-        nav a:hover {
+        nav a:hover, nav a.active {
             color: #38bdf8;
         }
         .hero {
             text-align: center;
-            padding: 2.5rem 1rem;
+            padding: 2rem 1rem;
             background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
         }
         .hero h1 {
-            font-size: 2rem;
+            font-size: 1.8rem;
             margin-bottom: 0.5rem;
             color: #ffffff;
         }
         .hero p {
             color: #94a3b8;
-            font-size: 1rem;
+            font-size: 0.95rem;
+        }
+        .leagues-bar {
+            display: flex;
+            overflow-x: auto;
+            background-color: #1e293b;
+            padding: 0.75rem 1rem;
+            gap: 0.75rem;
+            border-bottom: 1px solid #334155;
+            white-space: nowrap;
+        }
+        .league-btn {
+            background-color: #334155;
+            color: #f8fafc;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            border: none;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        .league-btn:hover, .league-btn.active {
+            background-color: #2563eb;
+            color: #ffffff;
         }
         .container {
             max-width: 900px;
             margin: 0 auto;
-            padding: 1.5rem;
+            padding: 1rem;
             width: 100%;
             flex: 1;
         }
         .section-title {
-            font-size: 1.25rem;
-            margin-bottom: 1rem;
+            font-size: 1.15rem;
+            margin: 1.5rem 0 0.75rem 0;
             color: #38bdf8;
             border-left: 4px solid #2563eb;
             padding-left: 0.5rem;
@@ -74,26 +102,54 @@
         .widget-card {
             background-color: #1e293b;
             border-radius: 12px;
-            padding: 1rem;
+            padding: 0.75rem;
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        .stream-box {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border: 2px solid #2563eb;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        .stream-box h3 {
+            color: #38bdf8;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+        .stream-box p {
+            color: #94a3b8;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+        .watch-btn {
+            background-color: #e11d48;
+            color: white;
+            padding: 0.6rem 1.5rem;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            font-size: 0.9rem;
         }
         .ad-space {
             background-color: #334155;
             border: 2px dashed #64748b;
             border-radius: 8px;
-            padding: 1.5rem;
+            padding: 1rem;
             text-align: center;
             color: #94a3b8;
-            font-size: 0.875rem;
-            margin: 1.5rem 0;
+            font-size: 0.8rem;
+            margin: 1rem 0;
         }
         footer {
             background-color: #1e293b;
             text-align: center;
             padding: 1rem;
             color: #64748b;
-            font-size: 0.875rem;
+            font-size: 0.85rem;
             border-top: 1px solid #334155;
         }
     </style>
@@ -103,37 +159,45 @@
     <header>
         <div class="logo">Match<span>Vibe</span></div>
         <nav>
-            <a href="#">Live Scores</a>
-            <a href="#">Schedule</a>
+            <a href="#" class="active">Home</a>
+            <a href="#scores">Scores</a>
+            <a href="#streams">Live</a>
         </nav>
     </header>
 
     <div class="hero">
-        <h1>Live Sports & Score Hub</h1>
-        <p>Follow real-time football scores, match schedules, and updates worldwide.</p>
+        <h1>Ultimate Football Hub</h1>
+        <p>Live scores, standings, and matchday streaming updates.</p>
+    </div>
+
+    <!-- Leagues Navigation Bar -->
+    <div class="leagues-bar">
+        <button class="league-btn active">🏆 Premier League</button>
+        <button class="league-btn">⚽ La Liga</button>
+        <button class="league-btn">⭐ Champions League</button>
+        <button class="league-btn">🇮🇹 Serie A</button>
+        <button class="league-btn">🇩🇪 Bundesliga</button>
     </div>
 
     <div class="container">
-        <!-- Google AdSense Placeholder -->
+        <!-- Ad Banner 1 -->
         <div class="ad-space">
-            📢 Ad Banner Space (MatchVibe Sponsored Content)
+            📢 Sponsored Ad Space (MatchVibe Banner)
         </div>
 
-        <div class="section-title">Today's Matches & Live Scores</div>
+        <!-- Live Stream / Match Center Section -->
+        <div id="streams" class="stream-box">
+            <h3>🔴 LIVE MATCH STREAMS</h3>
+            <p>Select a live game to watch HD broadcasts and real-time commentary updates.</p>
+            <a href="#" class="watch-btn">▶ Watch Live Stream</a>
+        </div>
+
+        <div id="scores" class="section-title">Live Standings & Scores</div>
         <div class="widget-card">
-            <!-- Football Live Score Widget -->
-            <iframe id="sofa-standings-embed-37-41886" width="100%" height="600" src="https://widgets.sofascore.com/embed/unique-tournament/17/season/52376/standings/Premier%20League?widgetTitle=Premier%20League&showCompetitorCol=true" frameborder="0" scrolling="no" style="height:600px!important; stroke: #ffffff;"></iframe>
+            <!-- SofaScore Embedded Widget -->
+            <iframe id="sofa-standings-embed-37-41886" width="100%" height="550" src="https://widgets.sofascore.com/embed/unique-tournament/17/season/52376/standings/Premier%20League?widgetTitle=Premier%20League&showCompetitorCol=true" frameborder="0" scrolling="no" style="height:550px!important;"></iframe>
         </div>
 
-        <!-- Secondary Ad Space -->
+        <!-- Ad Banner 2 -->
         <div class="ad-space">
-            📢 Ad Banner Space (Google AdSense Ready)
-        </div>
-    </div>
-
-    <footer>
-        &copy; 2026 MatchVibe. All rights reserved.
-    </footer>
-
-</body>
-</html>
+            📢 Google AdSense / Adster
