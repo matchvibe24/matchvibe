@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MatchVibe</title>
+    <title>MatchVibe - Live Football & Standings</title>
     <style>
         body {
             background-color: #f3f4f6;
@@ -23,25 +23,15 @@
             align-items: center;
             justify-content: space-between;
             margin-bottom: 15px;
+            background: #ffffff;
+            padding: 12px 15px;
+            border-radius: 12px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
         }
-        .user-info {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 13px;
-            font-weight: 500;
-            color: #4b5563;
-        }
-        .avatar {
-            width: 35px;
-            height: 35px;
-            background: #d1d5db;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .logo-text {
             font-weight: bold;
-            color: #374151;
+            font-size: 16px;
+            color: #16a34a;
         }
         /* Featured Card */
         .featured-card {
@@ -72,6 +62,36 @@
             font-weight: bold;
             font-size: 12px;
             cursor: pointer;
+        }
+        /* Standings Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        th, td {
+            padding: 10px 12px;
+            text-align: left;
+            font-size: 13px;
+        }
+        th {
+            background: #1f2937;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background: #f9fafb;
+        }
+        /* News Item */
+        .news-card {
+            background: white;
+            padding: 15px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border: 1px solid #e5e7eb;
         }
         /* Bottom Navigation Bar */
         .bottom-nav {
@@ -118,12 +138,10 @@
 
 <div class="container">
     
-    <!-- Top User Header -->
+    <!-- Top Header (Clean) -->
     <div class="header">
-        <div class="user-info">
-            <div class="avatar">M</div>
-            <span>mohaxalane12@gmail.com</span>
-        </div>
+        <span class="logo-text">⚽ MatchVibe</span>
+        <span style="font-size: 12px; color: #16a34a; font-weight: bold;">● LIVE</span>
     </div>
 
     <!-- TAB 1: HOME -->
@@ -136,7 +154,7 @@
                 <div style="background: rgba(255,255,255,0.2); padding: 8px 12px; border-radius: 50%; font-size: 12px;">19:34</div>
                 <div><strong>Slavia Praha</strong></div>
             </div>
-            <button style="width: 100%; background: transparent; border: 1px solid #f59e0b; color: #f59e0b; padding: 10px; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 10px;">SAADAALI</button>
+            <button style="width: 100%; background: transparent; border: 1px solid #f59e0b; color: #f59e0b; padding: 10px; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 10px;">DAAWADA TOOSKA AH</button>
         </div>
 
         <div style="font-weight: bold; margin-bottom: 12px; font-size: 15px;">Kulamada Soo Socda</div>
@@ -148,7 +166,7 @@
                 <div style="font-size: 11px; color: #6b7280; margin-top: 4px;">📅 20 Oct, 2026 • 07:45 PM</div>
                 <div style="font-size: 11px; color: #d97706; margin-top: 2px;">⚽ UEFA Champions League</div>
             </div>
-            <button class="btn-action">SAADAALI</button>
+            <button class="btn-action">DAAWADE</button>
         </div>
 
         <div class="match-card">
@@ -157,7 +175,7 @@
                 <div style="font-size: 11px; color: #6b7280; margin-top: 4px;">📅 20 Oct, 2026 • 07:45 PM</div>
                 <div style="font-size: 11px; color: #d97706; margin-top: 2px;">⚽ UEFA Champions League</div>
             </div>
-            <button class="btn-action" style="background: #16a34a;">SAADAALI</button>
+            <button class="btn-action" style="background: #16a34a;">DAAWADE</button>
         </div>
 
         <!-- ADSTERRA AD CONTAINER -->
@@ -169,32 +187,60 @@
 
     <!-- TAB 2: KALA SAREYNTA (Standings) -->
     <div id="standings-tab" class="tab-content">
-        <h2>Kala Sareynta horyaalka</h2>
-        <p style="color: #6b7280;">Halkan waxaa ka soo muuqan doona dhibcaha iyo boosaska kooxaha.</p>
+        <h3 style="margin-bottom: 15px;">Kala Sareynta Horyaalka (Standings)</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Pos</th>
+                    <th>Team</th>
+                    <th>PL</th>
+                    <th>Pts</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td><strong>FC Barcelona</strong></td><td>10</td><td><strong>27</strong></td></tr>
+                <tr><td>2</td><td>Real Madrid</td><td>10</td><td>24</td></tr>
+                <tr><td>3</td><td>Atletico Madrid</td><td>10</td><td>20</td></tr>
+                <tr><td>4</td><td>Villarreal</td><td>10</td><td>18</td></tr>
+            </tbody>
+        </table>
     </div>
 
     <!-- TAB 3: WARAR (News) -->
     <div id="warar-tab" class="tab-content">
-        <h2>Wararka Ciyaaraha</h2>
-        <p style="color: #6b7280;">Wararkii ugu dambeeyay ee suuqa iibka iyo ciyaaraha maanta.</p>
+        <h3 style="margin-bottom: 15px;">Wararka Ciyaaraha</h3>
+        
+        <div class="news-card">
+            <div style="font-size: 11px; color: #d97706; font-weight: bold; margin-bottom: 4px;">SUUQA IIBKA</div>
+            <div style="font-weight: bold; font-size: 14px; margin-bottom: 6px;">Warka ugu dambeeyay ee xiddigaha Yurub</div>
+            <div style="font-size: 12px; color: #6b7280;">Kooxo waaweyn oo u l sakinaya ciyaartooy da'yar oo cusub xagaagan...</div>
+        </div>
+
+        <div class="news-card">
+            <div style="font-size: 11px; color: #16a34a; font-weight: bold; margin-bottom: 4px;">CHAMPIONS LEAGUE</div>
+            <div style="font-weight: bold; font-size: 14px; margin-bottom: 6px;">Kulamo xiiso badan oo caawa dhacaya</div>
+            <div style="font-size: 12px; color: #6b7280;">Fenerbahçe iyo kooxo kale oo caawa isaga horyaami doona tartanka...</div>
+        </div>
     </div>
 
     <!-- TAB 4: TOOS (Live Stream) -->
     <div id="toos-tab" class="tab-content">
-        <h2>Daawashada Tooska ah (Live Streams)</h2>
-        <div style="background: white; padding: 15px; border-radius: 12px; border: 1px solid #e5e7eb;">
-            <p style="font-weight: bold;">Kulanka ugu kulul hadda:</p>
-            <button style="width: 100%; background: #2563eb; color: white; border: none; padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer;">Halkan Riix si aad u Daawatid</button>
+        <h3 style="margin-bottom: 15px;">Daawashada Tooska ah (Live Streams)</h3>
+        <div class="match-card" style="flex-direction: column; align-items: flex-start; gap: 10px;">
+            <div style="font-weight: bold; font-size: 15px;">⚽ UEFA Champions League Live Stream</div>
+            <div style="font-size: 12px; color: #6b7280;">Dooro tayada aad rabto inaad ku daawato ciyaarta caawa:</div>
+            <button style="width: 100%; background: #2563eb; color: white; border: none; padding: 10px; border-radius: 8px; font-weight: bold; cursor: pointer;">Server 1 (HD - Mobile)</button>
+            <button style="width: 100%; background: #16a34a; color: white; border: none; padding: 10px; border-radius: 8px; font-weight: bold; cursor: pointer;">Server 2 (Fast - Low Data)</button>
         </div>
     </div>
 
     <!-- TAB 5: PROFILE -->
     <div id="profile-tab" class="tab-content">
-        <h2>Akoonkaaga (Profile)</h2>
+        <h3 style="margin-bottom: 15px;">Xogta Madasha (Platform Info)</h3>
         <div style="background: white; padding: 15px; border-radius: 12px; border: 1px solid #e5e7eb;">
-            <p><strong>Magaca:</strong> Mohamed Abdullah</p>
-            <p><strong>Email:</strong> mohaxalane12@gmail.com</p>
-            <p><strong>Xaaladda:</strong> Verified Account (Binance / USDT)</p>
+            <p style="margin: 5px 0;"><strong>Magaca App-ka:</strong> MatchVibe</p>
+            <p style="margin: 5px 0;"><strong>Nooca:</strong> Live Scores & Streams Platform</p>
+            <p style="margin: 5px 0; color: #16a34a;"><strong>Xaaladda:</strong> 100% Active & Monetized</p>
         </div>
     </div>
 
@@ -215,7 +261,7 @@
         Warar
     </a>
     <a class="nav-item" onclick="switchTab('toos', this)">
-        <svg viewBox="0 0 24 24"><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8 z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M10 16.5l6-4.5-6-4.5v9zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
         Toos
     </a>
     <a class="nav-item" onclick="switchTab('profile', this)">
